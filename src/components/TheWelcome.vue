@@ -1,5 +1,47 @@
+<template>
+  <div class="landing">
+    <section class="hero">
+      <h1>Welcome to Your Inventory Management System</h1>
+      <p>Manage your products, stock levels, and orders efficiently in one place.</p>
+      <button class="cta">Get Started</button>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <div class="feature">
+        <DocumentationIcon />
+        <h3>Complete Documentation</h3>
+        <p>Comprehensive guides and documentation to help you start managing your inventory effectively.</p>
+      </div>
+
+      <div class="feature">
+        <ToolingIcon />
+        <h3>Powerful Tooling</h3>
+        <p>Built with the latest technology to ensure fast, secure, and reliable management of your inventory.</p>
+      </div>
+
+      <div class="feature">
+        <EcosystemIcon />
+        <h3>Integrated Ecosystem</h3>
+        <p>Seamlessly integrates with your sales channels, accounting, and other systems.</p>
+      </div>
+
+      <div class="feature">
+        <CommunityIcon />
+        <h3>Community Support</h3>
+        <p>Join our community of users and get support, tips, and share insights.</p>
+      </div>
+
+      <div class="feature">
+        <SupportIcon />
+        <h3>Dedicated Support</h3>
+        <p>Our team is ready to help you with any challenges you face along the way.</p>
+      </div>
+    </section>
+  </div>
+</template>
+
 <script setup>
-import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
@@ -7,82 +49,74 @@ import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 </script>
 
-<template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon />
-    </template>
-    <template #heading>Documentation</template>
+<style scoped>
+.landing {
+  margin: 0;
+  padding: 0;
+}
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
 
-  <WelcomeItem>
-    <template #icon>
-      <ToolingIcon />
-    </template>
-    <template #heading>Tooling</template>
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank" rel="noopener"
-      >Cypress Component Testing</a
-    >.
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
 
-    <br />
+.hero .cta {
+  padding: 1rem 2rem;
+  background-color: #5865f2; /* Brand color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
 
-    More instructions are available in <code>README.md</code>.
-  </WelcomeItem>
+.hero .cta:hover {
+  background-color: #4752c4;
+}
 
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
+.features {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem;
+}
 
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
+.feature {
+  width: calc(33.333% - 2rem); /* Three features per row with gap */
+  padding: 1rem;
+  background: #2c2f33;
+  color: white;
+  border-radius: 8px;
+}
 
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
+.feature h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
 
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
-    Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
-    the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
-  </WelcomeItem>
+.feature p {
+  font-size: 1rem;
+}
 
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
-  </WelcomeItem>
-</template>
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+  }
+  
+  .feature {
+    width: 100%;
+  }
+}
+</style>
