@@ -2,12 +2,15 @@
 import { RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import NavBar from './components/NavBar.vue';
+import { theme } from './styles/theme.js';
+
+
+
 </script>
 
 <template>
   <div class="page">
     <NavBar /> <!-- Navbar at the top -->
-
     <!-- Div that holds the RouterView -->
     <div class="content">
       <RouterView />
@@ -16,6 +19,7 @@ import NavBar from './components/NavBar.vue';
 </template>
 
 <style scoped>
+
 
 .body {
   margin: 0;
@@ -28,7 +32,7 @@ import NavBar from './components/NavBar.vue';
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Make the page at least as tall as the viewport */
-  background-color: #36393f; /* Discord-like dark background */
+  background-color: v-bind('theme.colors.background'); /* Discord-like dark background */
   color: #fff; /* White text for contrast */
   font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font */
   margin: 0;
