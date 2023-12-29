@@ -42,11 +42,11 @@
 </template>
 
 <script setup>
-import DocumentationIcon from '../icons/IconDocumentation.vue'
-import ToolingIcon from '../icons/IconTooling.vue'
-import EcosystemIcon from '../icons/IconEcosystem.vue'
-import CommunityIcon from '../icons/IconCommunity.vue'
-import SupportIcon from '../icons/IconSupport.vue'
+import DocumentationIcon from '../../assets/icons/IconDocumentation.vue'
+import ToolingIcon from '../../assets/icons/IconTooling.vue'
+import EcosystemIcon from '../../assets/icons/IconEcosystem.vue'
+import CommunityIcon from '../../assets/icons/IconCommunity.vue'
+import SupportIcon from '../../assets/icons/IconSupport.vue'
 </script>
 
 <style scoped>
@@ -72,7 +72,8 @@ import SupportIcon from '../icons/IconSupport.vue'
 
 .hero .cta {
   padding: 1rem 2rem;
-  background-color: #5865f2; /* Brand color */
+  background-color: #5865f2;
+  /* Brand color */
   color: white;
   border: none;
   border-radius: 5px;
@@ -94,7 +95,8 @@ import SupportIcon from '../icons/IconSupport.vue'
 }
 
 .feature {
-  width: calc(33.333% - 2rem); /* Three features per row with gap */
+  width: calc(33.333% - 2rem);
+  /* Three features per row with gap */
   padding: 1rem;
   background: #2c2f33;
   color: white;
@@ -114,7 +116,7 @@ import SupportIcon from '../icons/IconSupport.vue'
   .features {
     flex-direction: column;
   }
-  
+
   .feature {
     width: 100%;
   }

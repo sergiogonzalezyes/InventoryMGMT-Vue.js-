@@ -1,23 +1,31 @@
 <template>
     <nav class="navbar">
         <ul class="nav-links">
-            <li><RouterLink to="/">Home</RouterLink></li>
-            <li><RouterLink to="/products">Products</RouterLink></li>
-            <li><RouterLink to="/inventory">Inventory</RouterLink></li>
-            <li><RouterLink to="/login">Login</RouterLink></li>
+            <li>
+                <RouterLink to="/">Home</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/products">Products</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/inventory">Inventory</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/login">Login</RouterLink>
+            </li>
         </ul>
     </nav>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import { theme } from '../styles/theme'
 </script>
 
 <style scoped>
 .navbar {
-    background-color: #2c2f33;
-    padding: 1rem 2rem;
-    text-align: center;
+    background-color: v-bind('theme.colors.primary.dark');
+    padding: v-bind('theme.spacing.md');
 }
 
 .nav-links {
@@ -29,17 +37,17 @@ import { RouterLink } from 'vue-router'
 }
 
 .nav-links li {
-    margin: 0 1rem;
+    margin-left: v-bind('theme.spacing.md');
+    margin-right: v-bind('theme.spacing.md');
+
 }
 
 .nav-links a {
-    color: #fff;
+    color: v-bind('theme.colors.white');
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #7289da; /* Discord brand color for hover effect */
+    color: v-bind('theme.colors.secondary.dark');
 }
 </style>
