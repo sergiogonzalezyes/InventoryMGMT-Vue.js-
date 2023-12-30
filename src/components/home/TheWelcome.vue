@@ -5,9 +5,9 @@
       <p>Manage your products, stock levels, and orders efficiently in one place.</p>
       <button class="cta">Get Started</button>
     </section>
-
+    <h2 class="header">Features</h2>
     <section class="features">
-      <h2>Features</h2>
+
       <div class="feature">
         <DocumentationIcon />
         <h3>Complete Documentation</h3>
@@ -47,69 +47,78 @@ import ToolingIcon from '../../assets/icons/IconTooling.vue'
 import EcosystemIcon from '../../assets/icons/IconEcosystem.vue'
 import CommunityIcon from '../../assets/icons/IconCommunity.vue'
 import SupportIcon from '../../assets/icons/IconSupport.vue'
+import { theme } from '../../styles/theme.js'
 </script>
 
 <style scoped>
 .landing {
-  margin: 0;
-  padding: 0;
+  margin: v-bind('theme.spacing.md');
+  padding: v-bind('theme.spacing.md');
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 0;
+  padding: v-bind('theme.spacing.xs') 0;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: v-bind('theme.fonts.size.xxxxxlg');
+  margin-bottom: v-bind('theme.spacing.md');
 }
 
 .hero p {
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
+  font-size: v-bind('theme.fonts.size.xlg');
+  margin-bottom: v-bind('theme.spacing.xl');
 }
 
 .hero .cta {
   padding: 1rem 2rem;
-  background-color: #5865f2;
+  background-color: v-bind('theme.colors.secondary.light');
   /* Brand color */
-  color: white;
+  color: v-bind('theme.colors.white');
   border: none;
-  border-radius: 5px;
+  border-radius: v-bind('theme.spacing.sm');
   cursor: pointer;
-  font-size: 1rem;
+  font-size: v-bind('theme.fonts.size.lg');
   transition: background-color 0.3s;
 }
 
 .hero .cta:hover {
-  background-color: #4752c4;
+  background-color: v-bind('theme.colors.secondary.dark');
+}
+
+.header {
+  text-align: center;
+  font-size: v-bind('theme.fonts.size.xxxlg');
+  margin: v-bind('theme.spacing.sm') 0;
+
 }
 
 .features {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   text-align: center;
-  gap: 2rem;
-  padding: 2rem;
+  gap: v-bind('theme.spacing.md');
+  padding: v-bind('theme.spacing.md');
 }
 
 .feature {
   width: calc(33.333% - 2rem);
   /* Three features per row with gap */
-  padding: 1rem;
-  background: #2c2f33;
-  color: white;
-  border-radius: 8px;
+  padding: v-bind('theme.spacing.md');
+  background: v-bind('theme.colors.primary.dark');
+  color: v-bind('theme.colors.white');
+  border-radius: v-bind('theme.spacing.md');
 }
 
 .feature h3 {
-  font-size: 1.5rem;
-  margin: 1rem 0;
+  font-size: v-bind('theme.fonts.size.xlg');
+  margin: v-bind('theme.spacing.md') 0;
 }
 
 .feature p {
-  font-size: 1rem;
+  font-size: v-bind('theme.fonts.size.md');
 }
 
 @media (max-width: 768px) {

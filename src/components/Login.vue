@@ -51,58 +51,44 @@ const password = ref('')
 .username,
 .password,
 button {
-    margin: 10px 0;
-    /* Uniform margin */
+    margin: v-bind('theme.spacing.sm') 0;
     border: none;
-    /* No border */
-    border-radius: 4px;
-    /* Slightly rounded corners */
-    padding: 10px;
-    /* Comfortable padding */
+    border-radius: v-bind('theme.spacing.xs');
+    padding: v-bind('theme.spacing.sm');
     width: 100%;
-    /* Full width inputs and button */
 }
 
 .username,
 .password {
     background-color: #40444b;
-    /* Slightly different background for inputs */
     color: #dcddde;
-    /* Light grey text */
 }
 
 .display {
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* Full width for the display container */
 }
 
 .display input,
 .display button {
     box-sizing: border-box;
-    /* Include padding and border in the element's total width and height */
 }
 
 .display button {
-    background-color: #5865f2;
-    /* Discord's brand color for the button */
+    background-color: v-bind('theme.colors.secondary.light');
     color: white;
     font-weight: bold;
     cursor: pointer;
-    /* Hand cursor on hover */
     transition: background-color 0.3s;
-    /* Smooth transition for button hover */
 }
 
 .display button:hover {
-    background-color: #4752c4;
-    /* Slightly darker color on hover */
+    background-color: v-bind('theme.colors.secondary.dark');
 }
 
 .display p {
-    margin: 10px 0;
-    color: #b9bbbe;
-    /* Light grey for text */
+    margin: v-bind('theme.spacing.sm') 0;
+    color: v-bind('theme.colors.white');
 }
 </style>
