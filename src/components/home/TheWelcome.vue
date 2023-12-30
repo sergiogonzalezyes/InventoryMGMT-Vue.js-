@@ -101,15 +101,15 @@ import { theme } from '../../styles/theme.js'
   text-align: center;
   gap: v-bind('theme.spacing.md');
   padding: v-bind('theme.spacing.md');
+  
 }
 
 .feature {
   width: calc(33.333% - 2rem);
-  /* Three features per row with gap */
-  padding: v-bind('theme.spacing.md');
   background: v-bind('theme.colors.primary.dark');
   color: v-bind('theme.colors.white');
   border-radius: v-bind('theme.spacing.md');
+  padding: v-bind('theme.spacing.md') 0;
 }
 
 .feature h3 {
