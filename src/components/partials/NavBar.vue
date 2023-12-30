@@ -19,13 +19,18 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-import { theme } from '../styles/theme'
+import { theme } from '../../styles/theme.js'
 </script>
 
 <style scoped>
 .navbar {
     background-color: v-bind('theme.colors.primary.dark');
     padding: v-bind('theme.spacing.md');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: v-bind('theme.spacing.md');
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .nav-links {

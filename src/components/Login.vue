@@ -31,9 +31,9 @@ const password = ref('')
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - (v-bind('theme.spacing.xl') * 2));
     color: v-bind('theme.colors.white');
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;    
 }
 
 .loginwrapper {
