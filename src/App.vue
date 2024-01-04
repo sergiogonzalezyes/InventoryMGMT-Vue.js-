@@ -27,6 +27,6 @@ import { theme } from './styles/theme.js';
 }
 
 .page-container {
-  padding-top: v-bind('theme.spacing.md');
+  padding: 0;
 }
 </style>

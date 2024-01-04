@@ -1,28 +1,23 @@
 <template>
-    <div class="wrapper">
-        <div class="loginwrapper">
-            <h1>Test Login</h1>
-            <div class="display">
-                <input type="text" placeholder="Username" v-model="username" class="username" />
-                <input type="password" placeholder="Password" v-model="password" class="password" />
-                <button>Login</button>
-            </div>
-            <div class="display">
-                <p>Username: {{ username }}</p>
-                <p>Password: {{ password }}</p>
-            </div>
-        </div>
-    </div>
+    <AuthContainer :fields="loginFields" :name="login" @form-submit="handleLoginSubmit" />
+
 </template>
 
 <script setup>
-import { theme } from '../styles/theme'
+import { theme } from '../../styles/theme'
 import { ref } from 'vue'
+import AuthContainer from './AuthContainer.vue';
 
-const username = ref('')
-const password = ref('')
+const loginFields = ref([
+  { label: 'Email or Username', type: 'text', placeholder: 'Enter your email or username', value: '' },
+  { label: 'Password', type: 'password', placeholder: 'Enter your password', value: '' }
+]);
 
+const login = ref('login')
 
+const handleLoginSubmit = (formData) => {
+    console.log(formData)
+}
 
 </script>
 
@@ -31,7 +26,7 @@ const password = ref('')
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - (v-bind('theme.spacing.xl') * 2));
+    height: calc(100vh - (v-bind('theme.spacing.lg') * 2));
     color: v-bind('theme.colors.white');
     font-family: 'Helvetica Neue', Arial, sans-serif;    
 }
@@ -48,8 +43,9 @@ const password = ref('')
     width: 300px;
 }
 
-.username,
+.email,
 .password,
+.username,
 button {
     margin: v-bind('theme.spacing.sm') 0;
     border: none;
@@ -58,6 +54,7 @@ button {
     width: 100%;
 }
 
+.email,
 .username,
 .password {
     background-color: #40444b;
