@@ -40,65 +40,37 @@
 <script setup>
 import { theme } from '../../styles/theme'
 import { useRouter } from 'vue-router'
-import { emailRegex, passwordRegex, usernameRegex, emailOrUsernameRegex } from '../../utils/regexValidations.js'
+import { RouterService } from '../services/routerService.js'
+import { useValidation } from '../services/validationService.js'
+
 
 const props = defineProps({
     fields: Array,
     name: String
 })
 
-const validateField = (field) => {
-    if (field.type === 'text') {
-        const error = emailOrUsernameRegex.test(field.value) ? null : 'Please enter a valid username or email';
-        field.error = error;
-    } else if (field.type === 'password') {
-        const error = passwordRegex.test(field.value) ? null : 'Please enter a valid password';
-        field.error = error;
-    } else if (field.type === 'email') {
-        const error = emailRegex.test(field.value) ? null : 'Please enter a valid email';
-        field.error = error;
-    } else if (field.type === 'username') {
-        const error = usernameRegex.test(field.value) ? null : 'Please enter a valid username';
-        field.error = error;
-    } else {
-        field.error = null;
-    }
+const { validateField, validateForm } = useValidation()
+const emit = defineEmits(['form-submit'])
+const routerService = new RouterService(useRouter());
+
+const handleInput = (field) => {
+    validateField(field);
 }
 
-const emit = defineEmits(['form-submit'])
-const router = useRouter()
-
 const handleSubmit = () => {
-    let isFormValid = true;
-
-    for (const field of props.fields) {
-        validateField(field);
-        if (field.error) {
-            isFormValid = false;
-        }
-    }
-
+    let isFormValid = validateForm(props.fields);
+    
     if (isFormValid) {
-        const passwordField = props.fields.find(f => f.label === 'Password');
-        const confirmPasswordField = props.fields.find(f => f.label === 'Confirm Password');
-
-        if (passwordField && confirmPasswordField && passwordField.value !== confirmPasswordField.value) {
-            confirmPasswordField.error = 'Passwords do not match';
-            isFormValid = false;
-        }
-    }
-
-    if (isFormValid) {
-        const formData = props.fields.reduce((acc, field) => {
-            acc[field.label] = field.value;
-            return acc;
-            }, {});
+        const formData = props.fields.reduce((submission, field) => {
+            submission[field.name] = field.value;
+            return submission;
+        }, {});
         emit('form-submit', formData);
     }
 }
 
 const routerLoginRegister = (route) => {
-    router.push(`/${route}`)
+    routerService.navigateTo(route);
 }
 
 </script>
