@@ -1,0 +1,32 @@
+{
+    "title": "Register",
+
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "emailType": "text",
+    "invalidEmail": "Invalid email",
+
+    "username": "Username",
+    "usernamePlaceholder": "Enter your username",
+    "usernameType": "username",
+    "invalidUsername": "Invalid username",
+
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordType": "password",
+    "invalidPassword": "Invalid password",
+
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "confirmPasswordType": "password",
+    "invalidConfirmPassword": "Password does not match",
+
+
+    "register": "Register",
+
+    "dontHaveAccount": "Don't have an account?",
+
+    "alreadyHaveAccount": "Already have an account?",
+
+    "emptyValue": ""
+}

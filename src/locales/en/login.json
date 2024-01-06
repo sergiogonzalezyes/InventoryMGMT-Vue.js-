@@ -1,0 +1,20 @@
+{
+    "title": "Login",
+    
+    "emailOrUsername": "Email or Username",
+    "emailOrUsernamePlaceholder": "Enter your email or username",
+    "emailOrUsernameType": "text",
+    "invalidEmailOrUsername": "Invalid email or username",
+
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordType": "password",
+    "invalidPassword": "Invalid password",
+
+    "login": "Login",
+
+    "dontHaveAccount": "Don't have an account?",
+    "register": "Register Here",
+
+    "emptyValue": ""
+}

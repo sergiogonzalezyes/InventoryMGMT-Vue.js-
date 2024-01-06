@@ -2,6 +2,8 @@
     <div class="wrapper">
         <div class="loginwrapper">
             <div class="display">
+                <h1 v-if="name === login.title" class="title"> {{ login.title }}</h1>
+                <h1 v-else class="title"> {{ register.title }} </h1>
                 <form @submit.prevent="handleSubmit">
                     <div v-for="(field, index) in fields" :key="index" class="form-group">
                         <label :for="`field-${index}`" class="label">{{ field.label }}</label>
@@ -13,23 +15,23 @@
                             :id="`field-${index}`"
                             :name = "field.name"
                             class="input"
-                            @input="validateField(field)"
+                            @input="handleInput(field)"
                         />
                         <div class="error-wrapper">
                             <span :class="['error', { active: field.error }]">{{ field.error }}</span>
                         </div>
                     </div>
-                    <button v-if="name === 'login'" type="submit" class="button">Login</button>
-                    <button v-else-if="name === 'register'" type="submit" class="button">Register</button>
+                    <button v-if="name === login.login" type="submit" class="button"> {{ login.login }}</button>
+                    <button v-else-if="name === register.register" type="submit" class="button"> {{ register.register }}</button>
                 </form>
                 <div class="buttons">
-                    <template v-if="name === 'register'">
-                        <p>Already have an account?</p>
-                        <button @click="routerLoginRegister('login')" class="button">Login</button>
+                    <template v-if="name === register.register">
+                        <p>{{ register.alreadyHaveAccount }}</p>
+                        <button @click="routerLoginRegister(login.login)" class="button">{{ login.login }}</button>
                     </template>
                     <template v-else>
-                        <p>Don't have an account?</p>
-                        <button @click="routerLoginRegister('register')" class="button">Register Here</button>
+                        <p>{{ login.dontHaveAccount }}</p>
+                        <button @click="routerLoginRegister(register.register)" class="button"> {{ register.register }}</button>
                     </template>
                 </div>
             </div>
@@ -42,6 +44,8 @@ import { theme } from '../../styles/theme'
 import { useRouter } from 'vue-router'
 import { RouterService } from '../services/routerService.js'
 import { useValidation } from '../services/validationService.js'
+import login from '../../locales/en/login.json'
+import register from '../../locales/en/register.json'
 
 
 const props = defineProps({
@@ -72,7 +76,6 @@ const handleSubmit = () => {
 const routerLoginRegister = (route) => {
     routerService.navigateTo(route);
 }
-
 </script>
 
 <style scoped>
@@ -95,6 +98,13 @@ const routerLoginRegister = (route) => {
     padding: v-bind('theme.spacing.xl');
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     width: 300px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: v-bind('theme.spacing.md') 0;
 }
 
 .form-group {
