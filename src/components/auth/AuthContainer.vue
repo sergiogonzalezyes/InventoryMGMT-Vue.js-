@@ -13,7 +13,6 @@
                             :class="field.class"
                             v-model="field.value"
                             :id="`field-${index}`"
-                            :name = "field.name"
                             class="input"
                             @input="handleInput(field)"
                         />
@@ -24,6 +23,7 @@
                     <button v-if="name === login.login" type="submit" class="button"> {{ login.login }}</button>
                     <button v-else type="submit" class="button"> {{ register.register }}</button>
                 </form>
+                <div class="divider"></div>
                 <div class="buttons">
                     <template v-if="name === register.register">
                         <p>{{ register.alreadyHaveAccount }}</p>
@@ -42,10 +42,11 @@
 <script setup>
 import { theme } from '../../styles/theme'
 import { useRouter } from 'vue-router'
-import { RouterService } from '../services/routerService.js'
-import { useValidation } from '../services/validationService.js'
+import { RouterService } from '../../services/routerService.js'
+import { useValidation } from '../../services/validationService.js'
 import login from '../../locales/en/login.json'
 import register from '../../locales/en/register.json'
+import determineLoginType from '@/utils/loginTypeDetector'
 
 const props = defineProps({
     fields: Array,
@@ -64,12 +65,26 @@ const handleSubmit = () => {
     let isFormValid = validateForm(props.fields);
     
     if (isFormValid) {
-        const formData = props.fields.reduce((submission, field) => {
-            submission[field.name] = field.value;
-            return submission;
-        }, {});
+        const formData = {};
+        let loginInputField;
+
+        props.fields.forEach(field => {
+            if (field.label === login.emailOrUsername) {
+                loginInputField = field;
+            } else {
+                formData[field.label] = field.value;
+            }
+        });
+
+        if (loginInputField) {
+            const loginType = determineLoginType(loginInputField.value);
+            formData[loginType] = loginInputField.value;
+        }
+
+        console.log('AuthContainer:', formData);
         emit('form-submit', formData);
-    }
+
+    };
 }
 
 const routerLoginRegister = (route) => {
@@ -111,7 +126,7 @@ const routerLoginRegister = (route) => {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: v-bind('theme.spacing.xs') 0 v-bind('theme.spacing.xs') 0;
+
 }
 
 .label {
@@ -136,6 +151,11 @@ button {
     border-radius: v-bind('theme.spacing.xs');
     padding: v-bind('theme.spacing.sm');
     width: 100%;
+}
+
+.divider {
+    border-top: 1px solid v-bind('theme.colors.primary.light');
+    margin: v-bind('theme.spacing.xl') 0;
 }
 
 .buttons {
@@ -187,7 +207,7 @@ button {
 }
 
 .error {
-    color: red;
+    color: rgb(248, 120, 120);
     font-size: v-bind('theme.fonts.size.sm');
     line-height: 0.5em;
     visibility: hidden;

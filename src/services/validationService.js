@@ -1,6 +1,6 @@
-import { emailRegex, passwordRegex, usernameRegex, emailOrUsernameRegex } from '../../utils/regexValidations.js';
-import login from '../../locales/en/login.json';
-import register from '../../locales/en/register.json';
+import { emailRegex, passwordRegex, usernameRegex, emailOrUsernameRegex } from '../utils/regexValidations.js';
+import login from '@/locales/en/login.json';
+import register from '@/locales/en/register.json';
 
 export function useValidation() {
     const validateField = (field) => {

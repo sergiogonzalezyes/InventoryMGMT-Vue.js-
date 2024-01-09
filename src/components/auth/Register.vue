@@ -6,7 +6,9 @@
 <script setup>
 import { ref } from 'vue'
 import AuthContainer from './AuthContainer.vue';
-import register from '../../locales/en/register.json'
+import register from '@/locales/en/register.json'
+import UserService from '../../services/api/userService.js';
+
 
 const formFields = ref([
   { label: register.email, type: register.emailType, placeholder: register.emailPlaceholder, value: register.emptyValue},
@@ -15,8 +17,14 @@ const formFields = ref([
   { label: register.confirmPassword, type: register.confirmPasswordType, placeholder: register.confirmPasswordPlaceholder, value: register.emptyValue}
 ]);
 
-const handleFormSubmit = (formData) => {
-    console.log(formData)
+const handleFormSubmit = async (formData) => {
+  try {
+    const response = await UserService.registerUser(formData);
+    console.log(response);
+  }
+  catch (error) {
+    console.log(error);
+  }
 }
 
 </script>
