@@ -1,5 +1,5 @@
 <template>
-    <AuthContainer :fields="formFields" :name="Register" @form-submit="handleFormSubmit" />
+    <AuthContainer :fields="formFields" :name="`${register.title}`" @form-submit="handleFormSubmit" />
 
 </template>
 
@@ -14,8 +14,6 @@ const formFields = ref([
   { label: register.password, type: register.passwordType, placeholder: register.passwordPlaceholder, value: register.emptyValue},
   { label: register.confirmPassword, type: register.confirmPasswordType, placeholder: register.confirmPasswordPlaceholder, value: register.emptyValue}
 ]);
-
-const Register = register.register
 
 const handleFormSubmit = (formData) => {
     console.log(formData)

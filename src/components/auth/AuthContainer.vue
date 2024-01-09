@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <button v-if="name === login.login" type="submit" class="button"> {{ login.login }}</button>
-                    <button v-else-if="name === register.register" type="submit" class="button"> {{ register.register }}</button>
+                    <button v-else type="submit" class="button"> {{ register.register }}</button>
                 </form>
                 <div class="buttons">
                     <template v-if="name === register.register">
@@ -46,7 +46,6 @@ import { RouterService } from '../services/routerService.js'
 import { useValidation } from '../services/validationService.js'
 import login from '../../locales/en/login.json'
 import register from '../../locales/en/register.json'
-
 
 const props = defineProps({
     fields: Array,
@@ -76,6 +75,7 @@ const handleSubmit = () => {
 const routerLoginRegister = (route) => {
     routerService.navigateTo(route);
 }
+
 </script>
 
 <style scoped>
