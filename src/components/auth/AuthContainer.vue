@@ -6,7 +6,6 @@
                 <h1 v-else class="title"> {{ register.title }} </h1>
                 <form @submit.prevent="handleSubmit">
                     <div v-for="(field, index) in fields" :key="index" class="form-group">
-                        <label :for="`field-${index}`" class="label">{{ field.label }}</label>
                         <input
                             :type="field.type"
                             :placeholder="field.placeholder"

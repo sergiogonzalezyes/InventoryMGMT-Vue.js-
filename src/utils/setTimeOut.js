@@ -1,16 +1,14 @@
 function showNotification() {
-    console.log("Something happened!");
+    console.log("NOTIF SHOWING");
 }
 
-function checkConditionAndShowNotification(username) {
-    if (username) {
+function checkConditionAndShowNotification(status_code) {
+    if (status_code === 201) {
         showNotification();
         setTimeout(() => {
-            // Hide the notification after 3 seconds
-            console.log(username);
+            console.log("NOTIFHIDDEN");
         }, 3000);
     }
 }
+
 export default checkConditionAndShowNotification;
-
-

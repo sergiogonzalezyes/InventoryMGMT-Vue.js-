@@ -3,14 +3,18 @@ import { RouterView } from 'vue-router'
 import NavBar from './components/partials/NavBar.vue'
 import { theme } from './styles/theme.js';
 import RegisterNotifier from "./components/auth/authNotifications/RegisterNotifier.vue"
+import { useRegisterState } from '@/utils/useRegisterState.js'
 
-
+const registerState = useRegisterState();
 
 </script>
 
 <template>
   <div class="app-container">
-    <RegisterNotifier />
+    <div v-show="registerState.isRegistered">
+      <RegisterNotifier />
+    </div>
+
     <NavBar />
     <div class="page-container">
       <RouterView />

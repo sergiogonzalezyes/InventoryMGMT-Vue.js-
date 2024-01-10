@@ -7,7 +7,11 @@ import { ref } from 'vue'
 import AuthContainer from './AuthContainer.vue';
 import register from '@/locales/en/register.json'
 import UserService from '../../services/api/userService.js';
-import { handleNotification } from '@/components/auth/authNotifications/RegisterNotifier.vue';
+import { useRegisterStateInject } from '@/utils/useRegisterState.js';
+
+const registerState = useRegisterStateInject();
+
+
 
 const formFields = ref([
   { label: register.email, type: register.emailType, placeholder: register.emailPlaceholder, value: register.emptyValue },
@@ -16,14 +20,18 @@ const formFields = ref([
   { label: register.confirmPassword, type: register.confirmPasswordType, placeholder: register.confirmPasswordPlaceholder, value: register.emptyValue }
 ]);
 
-
 const handleFormSubmit = async (formData) => {
   try {
     const response = await UserService.registerUser(formData);
-    console.log(response);
-
+    console.log(response.status);
     if (response.status === 201) {
-      handleNotification("John Doe");
+      console.log("User created successfully");
+      registerState.isRegistered = true;
+
+      setTimeout(() => {
+        registerState.isRegistered = false;
+      }, 3000);
+
     }
   }
   catch (error) {
