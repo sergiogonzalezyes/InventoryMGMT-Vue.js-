@@ -1,6 +1,5 @@
 <template>
-    <AuthContainer :fields="formFields" :name="`${login.title}`" @form-submit="handleFormSubmit" />
-
+  <AuthContainer :fields="formFields" :name="`${login.title}`" @form-submit="handleFormSubmit" />
 </template>
 
 <script setup>
@@ -27,6 +26,4 @@ const handleFormSubmit = async (formData) => {
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import NavBar from './components/partials/NavBar.vue'
 import { theme } from './styles/theme.js';
+import RegisterNotifier from "./components/auth/authNotifications/RegisterNotifier.vue"
 
 
 
@@ -9,6 +10,7 @@ import { theme } from './styles/theme.js';
 
 <template>
   <div class="app-container">
+    <RegisterNotifier />
     <NavBar />
     <div class="page-container">
       <RouterView />
